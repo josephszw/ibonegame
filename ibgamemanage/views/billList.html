@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>球员管理系统</title>
+    <link rel="stylesheet" href="../static/css/public.css"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../static/css/home.css">
+<style>
+ul.pagination {
+    display: inline-block;
+    padding: 40px;
+    margin: 0px;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+</head>
+<body>
+<!--头部-->
+    <header class="publicHeader">
+        <h1>球员管理系统</h1>
+        <div class="publicHeaderR">
+            <p><span style="color: #fff21b">{{.user}}</span>欢迎你！</p>
+            <a href="/login">退出</a>
+        </div>
+    </header>
+<!--时间-->
+    <section class="publicTime">
+            <span id="time">2015年1月1日 11:11  星期一</span>
+            <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+    </section>
+<!--主体内容-->
+    <section class="publicMian ">
+        <div class="left">
+            <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+            <nav>
+                <ul class="list">
+                    <li id="active"><a href="/">球员管理</a></li>
+                    <li><a href="providerList.html">球队管理</a></li>
+                    <li><a href="userList.html">用户管理</a></li>
+                    <li><a href="password.html">密码修改</a></li>
+                    <li><a href="login.html">退出系统</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>球员管理页面</span>
+            </div>
+            <div class="search">
+                <span>球员名称：</span>
+                <input type="text" placeholder="请输入球员的名称"/>
+                
+                <span>球队：</span>
+                <select name="tigong" >
+                    <option value="">--请选择--</option>
+                    <option value="">勇士</option>
+                    <option value="">骑士</option>
+                </select>
+
+                <span>位置：</span>
+                <select name="fukuan">
+                    <option value="">--请选择--</option>
+                    <option value="">控卫</option>
+                    <option value="">分卫</option>
+                </select>
+
+                <input type="button" value="查询"/>
+                <a href="/new">添加球员</a>
+            </div>
+            <!--账单表格 样式和供应商公用-->
+            <table class="providerTable" cellpadding="0" cellspacing="0">
+                <tr class="firstTr">
+                    <th width="5%">playerId</th>
+                    <th width="20%">名字</th>
+                    <th width="10%">昵称</th>
+                    <th width="10%">位置/第二位置</th>
+                    <th width="10%">类型</th>
+                    <th width="5%">总得分</th>
+                    <th width="5%">篮板</th>
+                    <th width="5%">助攻</th>
+                    <th width="5%">抢断</th>
+                    <th width="5%">盖帽</th>
+                    <th width="5%">出场</th>
+                    <th width="15%">操作</th>
+                </tr>
+                {{range .infos}}
+                <tr>
+                    <td>{{.PlayerId}}</td>
+                    <td>{{.Name}}</td>
+                    <td>{{.NickName}}</td>
+                    <td>{{.Position}}/{{.SecondPosition}}</td>
+                    <td>{{.Type}}</td>
+                    <td>{{.Score}}分</td>
+                    <td>{{.Rebound}}板</td>
+                    <td>{{.Assist}}次</td>
+                    <td>{{.Steal}}次</td>
+                    <td>{{.Cap}}次</td>
+                    <td>{{.AppearNum}}场</td>
+                    <td>
+                        <a href="/view/{{.PlayerId}}"><img src="../static/img/read.png" alt="查看" title="查看"/></a>
+                        <a href="/edit"><img src="../static/img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a href="#" class="removeBill"><img src="../static/img/schu.png" alt="删除" title="删除"/></a>
+                    </td>
+                </tr>
+                 {{end}}
+            </table>
+<div style="text-align:center;padding-left: 100px;margin-top: -24px;float: right;" class="pagination">
+	{{if .paginator}}
+		{{if gt .paginator.PageNums 1}}
+	<ul class="pagination pagination-sm">
+		{{if .paginator.HasPrev}}
+		<li>
+			<a href="{{.paginator.PageLinkFirst}}">首页</a>
+		</li>
+		<li>
+			<a href="{{.paginator.PageLinkPrev}}">上一页</a>
+		</li>
+		{{else}}
+		<li class="disabled">
+			<a>首页</a>
+		</li>
+		<li class="disabled">
+			<a>上一页</a>
+		</li>
+		{{end}}
+			{{range $index, $page := .paginator.Pages}}
+		<li{{if $.paginator.IsActive .}} class="active"{{end}}>
+			<a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
+		</li>
+		{{end}}
+			{{if .paginator.HasNext}}
+		<li>
+			<a href="{{.paginator.PageLinkNext}}">下一页</a>
+		</li>
+		<li>
+			<a href="{{.paginator.PageLinkLast}}">末页</a>
+		</li>
+		{{else}}
+		<li class="disabled">
+			<a>下一页</a>
+		</li>
+		<li class="disabled">
+			<a>末页</a>
+		</li>
+		{{end}}
+		<li class="disabled">
+			<a>
+				共{{.paginator.Nums }}条数据   当前{{.paginator.Page}}/{{.paginator.PageNums}}页
+			</a>
+		</li>
+		<li>
+			<input type="text" id="tiaozhuan" placeholder="跳转页" style="width: 47px;height: 30px;border: 1px solid #dddddd;border-left: 0px;border-radius: 0px 4px 4px 0px;text-align: center;"></li>
+	</ul>
+	{{end}} 
+		{{end}}
+</div>
+        </div>
+    </section>
+
+<!--点击删除按钮后弹出的页面-->
+<div class="zhezhao"></div>
+<div class="remove" id="removeBi">
+    <div class="removerChid">
+        <h2>提示</h2>
+        <div class="removeMain">
+            <p>你确定要删除该订单吗？</p>
+            <a href="#" id="yes">确定</a>
+            <a href="#" id="no">取消</a>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+</footer>
+<script src="../static/js/time.js"></script>
+<div style="text-align:center;">
+</div>
+</body>
+</html>
