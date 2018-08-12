@@ -7,6 +7,9 @@ ignore:
 - google.golang.org/appengine/cloudsql
 - log
 - gopkg.in/alexcesaro/quotedprintable.v3
+- ibgamemanage
+- gopkg.in/yaml.v2
+- golang.org/x/crypto/acme/autocert
 import:
 - package: github.com/Shopify/sarama
   version: ^1.17.0

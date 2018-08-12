@@ -1,6 +1,38 @@
-hash: 89652ca831258f08a6a94ac8b74c5de1f06d5deb5cf96b4da619aa4e99744b89
-updated: 2018-08-12T22:44:26.533206+08:00
+hash: fd468bf42a1ad221ebf424ac11efdb84a70c6fae86fdbed3d7f83b6385608ab4
+updated: 2018-08-12T23:32:07.353433+08:00
 imports:
+- name: github.com/astaxie/beedb
+  version: 1732292dfde40fab7b4ad38ba413492ec5633ad3
+- name: github.com/astaxie/beego
+  version: 053a075344c118a5cc41981b29ef612bb53d20ca
+  subpackages:
+  - cache
+  - cache/redis
+  - config
+  - context
+  - context/param
+  - grace
+  - httplib
+  - logs
+  - orm
+  - session
+  - toolbox
+  - utils
+  - utils/captcha
+  - validation
+- name: github.com/beego/compress
+  version: fbacc486da675e9378ebff939792c54b4f91e40c
+- name: github.com/beego/i18n
+  version: e9308947f407a24aaa1e7dbe35a01931e99cb255
+- name: github.com/beego/social-auth
+  version: a8ef647f2fd845e0afe0982f248bf2f57b4efeaf
+  subpackages:
+  - apps
+- name: github.com/beego/wetalk
+  version: b0d9d4d558e3b0ce504c58e36ea22ad992a73eec
+  subpackages:
+  - modules/utils
+  - setting
 - name: github.com/davecgh/go-spew
   version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
   subpackages:
@@ -25,6 +57,13 @@ imports:
   version: d85bb4911c725a53b135fc12862748a41b6c07da
 - name: github.com/golang/snappy
   version: 2e65f85255dbc3072edf28d6b5b8efc472979f5a
+- name: github.com/gomodule/redigo
+  version: 2cd21d9966bf7ff9ae091419744f0b3fb0fecace
+  subpackages:
+  - internal
+  - redis
+- name: github.com/howeyc/fsnotify
+  version: f0c08ee9c60704c1879025f2ae0ff3e000082c13
 - name: github.com/pierrec/lz4
   version: 6b9367c9ff401dbc54fabce3fb8d972e799b702d
   subpackages:
@@ -33,6 +72,27 @@ imports:
   version: e2704e165165ec55d062f5919b4b29494e9fa790
 - name: github.com/Shopify/sarama
   version: 35324cf48e33d8260e1c7c18854465a904ade249
+- name: github.com/slene/blackfriday
+  version: fd3fc8f180b28dfd78d2508b61c86dc2b7f970cd
 - name: github.com/spf13/cast
   version: 8965335b8c7107321228e3e3702cab9832751bac
-testImports: []
+- name: github.com/Unknwon/goconfig
+  version: ef1e4c783f8f0478bd8bff0edb3dd0bade552599
+testImports:
+- name: github.com/gopherjs/gopherjs
+  version: 0892b62f0d9fb5857760c3cfca837207185117ee
+  subpackages:
+  - js
+- name: github.com/jtolds/gls
+  version: 77f18212c9c7edc9bd6a33d383a7b545ce62f064
+- name: github.com/smartystreets/assertions
+  version: 886ec427f6b97ea7c207ab54f4045050647c2820
+  subpackages:
+  - internal/go-render/render
+  - internal/oglematchers
+- name: github.com/smartystreets/goconvey
+  version: ef6db91d284a0e7badaa1f0c404c30aa7dee3aed
+  subpackages:
+  - convey
+  - convey/gotest
+  - convey/reporting
