@@ -1,5 +1,5 @@
 hash: fd468bf42a1ad221ebf424ac11efdb84a70c6fae86fdbed3d7f83b6385608ab4
-updated: 2018-08-12T23:32:07.353433+08:00
+updated: 2018-08-14T21:36:28.897012+08:00
 imports:
 - name: github.com/astaxie/beedb
   version: 1732292dfde40fab7b4ad38ba413492ec5633ad3
@@ -42,7 +42,7 @@ imports:
   subpackages:
   - breaker
 - name: github.com/eapache/go-xerial-snappy
-  version: 040cc1a32f578808623071247fdbd5cc43f37f5f
+  version: 2b4bcfdd67a0b5a9b59fcbf9ae42046a575d3811
 - name: github.com/eapache/queue
   version: 093482f3f8ce946c05bcba64badd2c82369e084d
 - name: github.com/go-gomail/gomail
